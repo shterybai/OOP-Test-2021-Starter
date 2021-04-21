@@ -1,11 +1,13 @@
+// OOP Labtest 2021
+// Andrew Kennan
+// C19429514
+
 package ie.tudublin;
 
 import java.util.ArrayList;
 
 
 import processing.core.PApplet;
-import processing.data.Table;
-import processing.data.TableRow;
 
 public class ScoreDisplay extends PApplet
 {
@@ -20,9 +22,6 @@ public class ScoreDisplay extends PApplet
 	// Loading the score
 	void loadScore() {
 		for (int i = 0; i < score.length() - 1; i++) {
-			// String s = score.substring(i);
-			// String ss = score.substring(score.charAt(i + 1));
-
 			char c = score.charAt(i);
 			char cc = score.charAt(i + 1);
 
@@ -31,11 +30,9 @@ public class ScoreDisplay extends PApplet
 			checki1 = Character.isDigit(cc);
 			if (checki == false) {
 				if (checki1 == false) {
-					// System.out.println(c + "1" + "Quaver");
 					note.add(new Note(c, 1));
 				}
 				else {
-					// System.out.println(c + "2" + "Crotchet");
 					note.add(new Note(c, 2));
 				}
 			}
@@ -44,11 +41,6 @@ public class ScoreDisplay extends PApplet
 
 	// Printing the scores
 	void printScore() {
-		// for (int i = 0; i <= score.length(); i++) {
-		// 	Note n = note.get(i);
-		// 	System.out.println(n);
-		// }
-
 		for(Note n : note) {
 			// n.display();
 			System.out.println(n);
@@ -87,16 +79,11 @@ public class ScoreDisplay extends PApplet
 
 	void drawNotes()
 	{
-		// background(255);
 		float border = width * 0.1f;
 
 		for (int i = 0; i < note.size(); i++) {
 			float x = map(i, 0, (float) note.size(), border, width - border);
 			float y = map(note.get(i).getNote() - 60, 0, 8, border*2, border*2+40);
-
-			// circle(x, height / 2, 20);
-			// line(x+10, height / 2, x+10, height/ 2 - 40);
-			// line(x+10, height/ 2 - 40, x+20, height/ 2 - 30);
 
 			if(pmouseX < x+10 && pmouseX > x-10) {
 				fill(255, 0, 0);
