@@ -44,7 +44,7 @@ public class ScoreDisplay extends PApplet
 
 	// Printing the scores
 	void printScore() {
-		for (int i = 0; i < score.length() - 1; i++) {
+		for (int i = 0; i <= score.length(); i++) {
 			Note n = note.get(i);
 			System.out.println(n);
 		}
@@ -69,10 +69,16 @@ public class ScoreDisplay extends PApplet
 	public void draw()
 	{
 		background(255);
-		
+		float border = width * 0.1f;
+		float halfH = height / 1.5f;
+		for (int i = 0; i < 5; i ++) {
+			float y = map(i, 0, 10, border*2, height - border);
+			line(border, y, width - border, y);
+		}
 	}
 
 	void drawNotes()
 	{
+		
 	}
 }
