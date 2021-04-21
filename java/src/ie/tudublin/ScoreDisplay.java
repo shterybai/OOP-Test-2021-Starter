@@ -48,12 +48,10 @@ public class ScoreDisplay extends PApplet
 		// 	Note n = note.get(i);
 		// 	System.out.println(n);
 		// }
-		float border = width * 0.1f;
+
 		for(Note n : note) {
 			// n.display();
 			System.out.println(n);
-
-			// float x = map(n, 0, (float) note.size(), border, width - border);
 		}
 	}
 	
@@ -71,21 +69,42 @@ public class ScoreDisplay extends PApplet
 	{
 		loadScore();
 		printScore();
+		drawNotes();
 	}
 
 	public void draw()
 	{
-		background(255);
+		// background(255);
 		float border = width * 0.1f;
-		float halfH = height / 1.5f;
 		for (int i = 0; i < 5; i ++) {
 			float y = map(i, 0, 10, border*2, height - border);
 			line(border, y, width - border, y);
+		}
+		for (int i = 0; i < note.size(); i++) {
+			float x = map(i, 0, (float) note.size(), border, width - border);
+
+			// int j = note.get(i) - '0';
+
+			fill(0);
+			text(i, x, height / 4);
+			// circle(x, height / 2, 20);
 		}
 	}
 
 	void drawNotes()
 	{
-		
+		background(255);
+		float border = width * 0.1f;
+
+		for (int i = 0; i < note.size(); i++) {
+			float x = map(i, 0, (float) note.size(), border, width - border);
+
+			// int j = note.get(i) - '0';
+
+			fill(0);
+			circle(x, height / 2, 20);
+			line(x+10, height / 2, x+10, height/ 2 - 40);
+			line(x+10, height/ 2 - 40, x+20, height/ 2 - 30);
+		}
 	}
 }
