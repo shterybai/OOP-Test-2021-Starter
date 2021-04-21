@@ -44,9 +44,16 @@ public class ScoreDisplay extends PApplet
 
 	// Printing the scores
 	void printScore() {
-		for (int i = 0; i <= score.length(); i++) {
-			Note n = note.get(i);
+		// for (int i = 0; i <= score.length(); i++) {
+		// 	Note n = note.get(i);
+		// 	System.out.println(n);
+		// }
+		float border = width * 0.1f;
+		for(Note n : note) {
+			// n.display();
 			System.out.println(n);
+
+			// float x = map(n, 0, (float) note.size(), border, width - border);
 		}
 	}
 	
@@ -57,7 +64,7 @@ public class ScoreDisplay extends PApplet
 		// How to convert a character to a number
 		char c = '7'; // c holds the character 7 (55)
 		int i = c - '0'; // i holds the number 7 (55 - 48) 
-		println(i);
+		// println(i);
 	}
 
 	public void setup() 
