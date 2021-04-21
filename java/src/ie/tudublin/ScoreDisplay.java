@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 
 import processing.core.PApplet;
+import processing.data.Table;
+import processing.data.TableRow;
 
 public class ScoreDisplay extends PApplet
 {
@@ -13,8 +15,17 @@ public class ScoreDisplay extends PApplet
 
 
 	// Array List
-	ArrayList<Note>note = new ArrayList<Note>();
-	
+	ArrayList<Note> note = new ArrayList<Note>();
+
+	void loadScore() {
+		Table table = loadTable("notes.csv", "header");
+
+		for(TableRow row : table.rows()) {
+			Note n = new Note(row);
+			note.add(n);
+		}
+	}
+
 	
 	public void settings()
 	{
