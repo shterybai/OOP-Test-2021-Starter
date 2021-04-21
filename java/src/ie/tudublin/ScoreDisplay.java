@@ -67,6 +67,7 @@ public class ScoreDisplay extends PApplet
 
 	public void setup() 
 	{
+		colorMode(RGB);
 		loadScore();
 		printScore();
 		drawNotes();
@@ -86,7 +87,7 @@ public class ScoreDisplay extends PApplet
 			// int j = note.get(i) - '0';
 
 			fill(0);
-			text(i, x, height / 4);
+			text(note.get(i).getNote(), x, height / 4);
 			// circle(x, height / 2, 20);
 		}
 	}
@@ -98,13 +99,31 @@ public class ScoreDisplay extends PApplet
 
 		for (int i = 0; i < note.size(); i++) {
 			float x = map(i, 0, (float) note.size(), border, width - border);
+			float y = map(i, 0, 8, border*2, height - border);
 
 			// int j = note.get(i) - '0';
 
 			fill(0);
-			circle(x, height / 2, 20);
-			line(x+10, height / 2, x+10, height/ 2 - 40);
-			line(x+10, height/ 2 - 40, x+20, height/ 2 - 30);
+			// circle(x, height / 2, 20);
+			// line(x+10, height / 2, x+10, height/ 2 - 40);
+			// line(x+10, height/ 2 - 40, x+20, height/ 2 - 30);
+
+			if(mouseX == x) {
+				fill(255, 0, 0);
+				circle(x, height / 2, 20);
+				line(x+10, height / 2, x+10, height/ 2 - 40);
+				if(note.get(i).getDuration() == 1) {
+					line(x+10, y - 40, x+20, y - 30);
+				}
+			}
+			else {
+				fill(0);
+				circle(x, y, 20);
+				line(x+10, y, x+10, y - 40);
+				if(note.get(i).getDuration() == 1) {
+					line(x+10, y - 40, x+20, y - 30);
+				}
+			}
 		}
 	}
 }
