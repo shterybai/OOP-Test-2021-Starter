@@ -19,7 +19,7 @@ public class ScoreDisplay extends PApplet
 
 	// Loading the score
 	void loadScore() {
-		for (int i = 0; i < score.length(); i++) {
+		for (int i = 0; i < score.length() - 1; i++) {
 			// String s = score.substring(i);
 			// String ss = score.substring(score.charAt(i + 1));
 
@@ -31,24 +31,24 @@ public class ScoreDisplay extends PApplet
 			checki1 = Character.isDigit(cc);
 			if (checki == false) {
 				if (checki1 == false) {
-					System.out.println(c + "1" + "Quaver");
-					// note.add(new Note(c, 1));
+					// System.out.println(c + "1" + "Quaver");
+					note.add(new Note(c, 1));
 				}
 				else {
-					System.out.println(c + "2" + "Crotchet");
-					// note.add(new Note(c, 2));
+					// System.out.println(c + "2" + "Crotchet");
+					note.add(new Note(c, 2));
 				}
 			}
 		}
 	}
 
 	// Printing the scores
-	// void printScore() {
-	// 	for (int i = 0; i < score.length(); i++) {
-	// 		Note n = note.get(i);
-	// 		System.out.println(n);
-	// 	}
-	// }
+	void printScore() {
+		for (int i = 0; i < score.length() - 1; i++) {
+			Note n = note.get(i);
+			System.out.println(n);
+		}
+	}
 	
 	public void settings()
 	{
@@ -63,6 +63,7 @@ public class ScoreDisplay extends PApplet
 	public void setup() 
 	{
 		loadScore();
+		printScore();
 	}
 
 	public void draw()
